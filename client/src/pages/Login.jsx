@@ -1,3 +1,4 @@
+import { useLoginUserMutation, useRegiserUserMutation } from "@/app/api/authApi"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -27,7 +28,9 @@ const Login = () => {
         email: "",
         password: "",
     });
-
+    //Using Mutation of RTK Query
+    const [regiserUser, { data: registerData, error: registerError, isLoading: registerIsLoading, isSuccess: registerIsSuccess }] = useRegiserUserMutation();
+    const [loginUser, { data: loginData, error: loginError, isLoading: loginIsLoading, isSuccess: loginIsSuccess }] = useLoginUserMutation();
     const changeInputHandler = (e, type) => {
         const { name, value } = e.target;
         if (type === "signup") {
